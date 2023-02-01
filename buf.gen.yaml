@@ -1,0 +1,14 @@
+version: v1
+plugins:
+- plugin: buf.build/protocolbuffers/go:v1.28.1
+  out: .
+  opt:
+  - module=github.com/kapeten/kapetnapis/kapetn/service
+- plugin: buf.build/grpc/go:v1.2.0
+  out: .
+  opt:
+  - module=github.com/kapeten/kapetnapis/kapetn/service
+- plugin: buf.build/grpc-ecosystem/gateway:v2.15.0
+  out: .
+  opt:
+  - module=github.com/kapeten/kapetnapis/kapetn/service
