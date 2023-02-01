@@ -1,7 +1,6 @@
 # kapetn-api-go
 
-This README outlines the details of collaborating on this Go package. A short
-introduction of this package could easily go here.
+Go packages for [kapetn protocol buffers](https://github.com/kapeten/kapetnapis).
 
 ## Prerequisites
 
