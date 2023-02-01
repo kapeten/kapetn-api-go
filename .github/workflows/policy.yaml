@@ -1,0 +1,21 @@
+name: policy
+on:
+  pull_request:
+jobs:
+  check-merge-commits:
+    name: Check merge commits
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+    - run: |
+        git config --global --add safe.directory /github/workspace
+        merge_commits=$(git rev-list --merges "origin/$GITHUB_BASE_REF".."origin/$GITHUB_HEAD_REF")
+        if [ -n "$merge_commits" ]; then
+          echo "Error: merge commits found in $GITHUB_BASE_REF..$GITHUB_HEAD_REF"
+          for merge_commit in $merge_commits; do
+            echo "$merge_commit"
+          done
+          exit 1
+        fi
